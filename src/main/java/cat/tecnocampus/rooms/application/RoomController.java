@@ -68,6 +68,16 @@ public class RoomController {
                 .collect(Collectors.toList());
     }
 
+    public void setNewStudent(StudentDTO studentDTO) {
+        Student student = studentDTO2Student(studentDTO);
+        students.put(student.getName(), student);
+    }
+
+    public void allocateStudentInClassroom(StudentDTO student, String name, String dayOfWeek) {
+        Classroom classroom = classroomDTO2classroom(getClassroom(name));
+        classroom.allocate(studentDTO2Student(student), DayOfWeek.valueOf(dayOfWeek));
+    }
+
     /********************************************************************
      * Translations between DTOs and domain objects
      ********************************************************************/
@@ -84,7 +94,7 @@ public class RoomController {
 
     private Student studentDTO2Student(StudentDTO studentDTO) {
         Student student = new Student();
-        student.setId(studentDTO.getId());
+        //student.setId(studentDTO.getId());
         student.setEmail(studentDTO.getEmail());
         student.setName(studentDTO.getName());
         student.setSecondName(studentDTO.getSecondName());
@@ -107,6 +117,18 @@ public class RoomController {
         classroomDTO.setAllocations(classroomDTOgetAllocationsDTO(classroom));
 
         return classroomDTO;
+    }
+
+    private Classroom classroomDTO2classroom(ClassroomDTO classroomDTO) {
+        Classroom classroom = new Classroom();
+
+        classroom.setName(classroomDTO.getName());
+        classroom.setCapacity(classroomDTO.getCapacity());
+        classroom.setPlugs(classroomDTO.isPlugs());
+        classroom.setOrientation(classroomDTO.getOrientation());
+        classroomDTO.getAllocations().stream()
+                .forEach(a -> classroom.allocate(studentDTO2Student(a.getStudent()), DayOfWeek.valueOf(a.getDayOfWeek())));
+        return classroom;
     }
 
     private List<AllocationDTO> classroomDTOgetAllocationsDTO(Classroom classroom) {

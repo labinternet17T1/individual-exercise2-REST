@@ -1,6 +1,7 @@
 package cat.tecnocampus.rooms;
 
 import cat.tecnocampus.rooms.application.RoomController;
+import cat.tecnocampus.rooms.application.dtos.StudentDTO;
 import cat.tecnocampus.rooms.domain.Classroom;
 import cat.tecnocampus.rooms.domain.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,13 @@ public class RoomsApplication implements CommandLineRunner {
 
         roomController.getFullyOccupiedClassrooms("friday").forEach(System.out::println);
         roomController.getNotFullyOccupiedClassrooms("friday").forEach(System.out::println);
+
+        StudentDTO studentDTO = new StudentDTO();
+        studentDTO.setName("Hola");
+        studentDTO.setSecondName("Student");
+        studentDTO.setEmail("hola@gmail.com");
+        roomController.setNewStudent(studentDTO);
+
+        roomController.allocateStudentInClassroom(studentDTO, "104", "THURSDAY");
     }
 }

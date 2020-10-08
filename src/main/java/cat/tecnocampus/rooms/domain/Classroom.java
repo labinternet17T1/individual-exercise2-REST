@@ -12,7 +12,7 @@ public class Classroom {
     private int capacity;
     private String orientation;
     private boolean plugs;
-    private List<Allocation> allocations;
+    private List<Allocation> allocations = new ArrayList<>();
 
     public Classroom() {
 

@@ -2,6 +2,7 @@ package cat.tecnocampus.rooms.application.dtos;
 
 import cat.tecnocampus.rooms.domain.Allocation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClassroomDTO {
@@ -9,7 +10,7 @@ public class ClassroomDTO {
     private int capacity;
     private String orientation;
     private boolean plugs;
-    private List<AllocationDTO> allocations;
+    private List<AllocationDTO> allocations = new ArrayList<>();
 
     public ClassroomDTO() {
     }
