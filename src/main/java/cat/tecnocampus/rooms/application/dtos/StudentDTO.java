@@ -1,5 +1,7 @@
 package cat.tecnocampus.rooms.application.dtos;
 
+import java.util.UUID;
+
 public class StudentDTO {
     private String id;
     private String name;
@@ -7,6 +9,7 @@ public class StudentDTO {
     private String email;
 
     public StudentDTO() {
+        id = UUID.randomUUID().toString();
     }
 
     public String getId() {

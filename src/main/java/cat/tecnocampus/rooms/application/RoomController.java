@@ -70,11 +70,11 @@ public class RoomController {
 
     public void setNewStudent(StudentDTO studentDTO) {
         Student student = studentDTO2Student(studentDTO);
-        students.put(student.getName(), student);
+        students.put(student.getId(), student);
     }
 
-    public void allocateStudentInClassroom(StudentDTO student, String name, String dayOfWeek) {
-        Classroom classroom = classroomDTO2classroom(getClassroom(name));
+    public void allocateStudentInClassroom(StudentDTO student, String classroomName, String dayOfWeek) {
+        Classroom classroom = classrooms.get(classroomName);
         classroom.allocate(studentDTO2Student(student), DayOfWeek.valueOf(dayOfWeek));
     }
 
@@ -94,7 +94,7 @@ public class RoomController {
 
     private Student studentDTO2Student(StudentDTO studentDTO) {
         Student student = new Student();
-        //student.setId(studentDTO.getId());
+        student.setId(studentDTO.getId());
         student.setEmail(studentDTO.getEmail());
         student.setName(studentDTO.getName());
         student.setSecondName(studentDTO.getSecondName());

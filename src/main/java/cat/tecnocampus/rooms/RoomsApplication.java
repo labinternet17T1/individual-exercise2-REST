@@ -30,10 +30,16 @@ public class RoomsApplication implements CommandLineRunner {
         HashMap<String, Student> students = new HashMap<>();
         HashMap<String, Classroom> classrooms = new HashMap<>();
 
-        students.put("Pepe", new Student("Pepe", "Pino", "pepe@tecnocampus.cat"));
-        students.put("Pepa", new Student("Pepa", "Pino", "pepa@tecnocampus.cat"));
-        students.put("Maria", new Student("Maria", "Fontaneda", "maria@tecnocampus.cat"));
-        students.put("Mario", new Student("Mario", "Fontaneda", "mario@tecnocampus.cat"));
+        var student = new Student("Pepe", "Pino", "pepe@tecnocampus.cat");
+        var pepeId = student.getId();
+        students.put(pepeId, student);
+        student = new Student("Pepa", "Pino", "pepa@tecnocampus.cat");
+        var pepaId = student.getId();
+        students.put(pepaId, student);
+        student = new Student("Maria", "Fontaneda", "maria@tecnocampus.cat");
+        students.put(student.getId(), student);
+        student = new Student("Mario", "Fontaneda", "mario@tecnocampus.cat");
+        students.put(student.getId(), student);
 
         classrooms.put("104", new Classroom.ClassroomBuilder().capacity(4).name("104").orientation("S").plugs(true).build());
         classrooms.put("105", new Classroom.ClassroomBuilder().capacity(2).name("105").orientation("SW").plugs(true).build());
