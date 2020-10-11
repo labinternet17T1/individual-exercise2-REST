@@ -46,12 +46,12 @@ public class RoomsApplication implements CommandLineRunner {
         classrooms.put("106", new Classroom.ClassroomBuilder().capacity(3).name("106").orientation("N").plugs(true).build());
         classrooms.put("107", new Classroom.ClassroomBuilder().capacity(2).name("107").orientation("W").plugs(true).build());
 
-        classrooms.get("104").allocate(students.get("Pepe"), DayOfWeek.valueOf("MONDAY"));
-        classrooms.get("104").allocate(students.get("Pepe"), DayOfWeek.valueOf("TUESDAY"));
-        classrooms.get("104").allocate(students.get("Pepe"), DayOfWeek.valueOf("WEDNESDAY"));
-        classrooms.get("105").allocate(students.get("Pepe"), DayOfWeek.valueOf("THURSDAY"));
-        classrooms.get("105").allocate(students.get("Pepe"), DayOfWeek.valueOf("FRIDAY"));
-        classrooms.get("105").allocate(students.get("Pepa"), DayOfWeek.valueOf("FRIDAY"));
+        classrooms.get("104").allocate(students.get(pepeId), DayOfWeek.valueOf("MONDAY"));
+        classrooms.get("104").allocate(students.get(pepeId), DayOfWeek.valueOf("TUESDAY"));
+        classrooms.get("104").allocate(students.get(pepeId), DayOfWeek.valueOf("WEDNESDAY"));
+        classrooms.get("105").allocate(students.get(pepeId), DayOfWeek.valueOf("THURSDAY"));
+        classrooms.get("105").allocate(students.get(pepeId), DayOfWeek.valueOf("FRIDAY"));
+        classrooms.get("105").allocate(students.get(pepaId), DayOfWeek.valueOf("FRIDAY"));
 
         roomController.setStudents(students);
         roomController.setClassrooms(classrooms);
